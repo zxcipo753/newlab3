@@ -36,6 +36,10 @@ class MainActivity : AppCompatActivity() {
             ImageObject("goldenretriever",R.drawable.goldenretriever),
             ImageObject("bulldog",R.drawable.bulldog),
             ImageObject("samoyed",R.drawable.samoyed),
+            ImageObject("pomeranian",R.drawable.pomeranian),
+            ImageObject("havanese",R.drawable.havanese),
+            ImageObject("corgi",R.drawable.corgi),
+            ImageObject("bernesemountain",R.drawable.bernesemountain),
             ImageObject("bodercollie",R.drawable.bodercollie))
 
     }
