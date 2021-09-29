@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         val dogdata: Array<ImageObject> = getData()
         val recycle = findViewById<RecyclerView>(R.id.rcvView) as RecyclerView
         var image = findViewById<ImageView>(R.id.mainImageView)
-        var text = findViewById<TextView>(R.id.maintextView)
+        var text = findViewById<TextView>(R.id.dog)
         var adapter =ImageAdapter(dogdata)
         recycle.adapter = adapter
         adapter.setOnItemClickListener(object : ImageAdapter.onItemClickListener{
