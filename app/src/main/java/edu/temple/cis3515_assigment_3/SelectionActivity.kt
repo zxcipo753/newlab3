@@ -6,25 +6,36 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import android.content.Intent
 
-class ImageActivity : AppCompatActivity() {
+class SelectionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val dogdata: Array<ImageObject> = getData()
         val recycle = findViewById<RecyclerView>(R.id.rcvView) as RecyclerView
-        var text = findViewById<TextView>(R.id.dog)
-        var image = findViewById<ImageView>(R.id.mainImageView)
+        val detailActivityIntent = Intent(this,DisplayActivity::class.java)
+        //var text = findViewById<TextView>(R.id.dog)
+        //var image = findViewById<ImageView>(R.id.mainImageView)
         var adapter =ImageAdapter(dogdata)
         recycle.adapter = adapter
         adapter.setOnItemClickListener(object : ImageAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
-                image.setImageResource(dogdata[position].resourceId)
-                text.text = dogdata[position].description
-                text.textSize = 22F
+                detailActivityIntent.putExtra("name",dogdata[position].description)
+                detailActivityIntent.putExtra("image",dogdata[position].resourceId)
+                startActivity(detailActivityIntent)
             }
         })
         recycle.layoutManager = GridLayoutManager(this,3)
+
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
 
     }
 
